@@ -114,4 +114,4 @@ python forecast_now.py --date 20261028
 
 ## License
 
-No license has been chosen yet; all rights reserved by the author until a license file is added.
+The code and model weights are released under the MIT License (see `LICENSE`). The observation and forecast data are not covered by this license; they remain subject to the terms of their providers.
