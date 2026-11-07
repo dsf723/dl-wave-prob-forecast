@@ -1,7 +1,7 @@
 """论文英文插图。只读已有结果文件，不训练、不挑选。
 
 输出 results/manuscript_figs/fig1–fig6.png（300 dpi）：
-  fig1 框架示意；fig2 逐预见日 CRPSS（2017–2019 回算测试集 / 2020–2024 业务）；fig3 覆盖率与区间宽度；
+  fig1 框架示意；fig2 逐预见日 CRPSS（2017–2019 回算测试集 / 2020–2024 业务）；fig3 覆盖率、区间宽度与集成的 PIT 直方图；
   fig4 预报实例（测试集 2019-01-16 起报：三站都有完整实测的冬季起报中选一次，只作示例）；fig5 台湾海峡业务检验逐预见日 CRPS；fig6 波浪能资源（浮标逐月、ERA5 逐年）。
 用法：python make_manuscript_figs.py
 """
@@ -47,6 +47,7 @@ def test_table():
     ens['model'] = 'ensemble'; ens['crps'] = score(q, y)
     ens['covered80'] = (y >= q[:, 9]) & (y <= q[:, 89]); ens['width80'] = q[:, 89] - q[:, 9]
     ens['p10'], ens['p50'], ens['p90'] = q[:, 9], q[:, 49], q[:, 89]
+    ens['pit'] = [np.interp(v, qq, TAU, left=0.0, right=1.0) for v, qq in zip(y, q)]
     base = ct[ct.model.isin(['emos_ln', 'emos_tn', 'raw_ensemble', 'climatology'])]
     return pd.concat([ens, base], ignore_index=True)
 
@@ -95,7 +96,7 @@ def fig2(tt, to):
 
 
 def fig3(tt):
-    fig, axs = plt.subplots(1, 2, figsize=(7.2, 3.0))
+    fig, axs = plt.subplots(1, 3, figsize=(7.6, 2.8))
     g = tt.groupby(['model', 'lead_day'])
     cov, wid = g.covered80.mean().unstack(0) * 100, g.width80.mean().unstack(0)
     for m in ['ensemble', 'emos_ln', 'raw_ensemble', 'climatology']:
@@ -103,9 +104,13 @@ def fig3(tt):
         axs[1].plot(wid.index, wid[m], marker='o', ms=3, lw=1.3, color=COL[m], label=LAB[m])
     axs[0].axhline(80, color='k', ls='--', lw=0.8); axs[0].set_ylabel('P10–P90 coverage (%)'); axs[0].set_title('(a) Calibration', fontsize=10)
     axs[1].set_ylabel('P10–P90 width (m)'); axs[1].set_title('(b) Sharpness', fontsize=10)
-    for ax in axs:
+    for ax in axs[:2]:
         ax.set_xlabel('Lead time (days)'); ax.set_xticks(range(1, 16, 2)); ax.grid(alpha=0.3, lw=0.5)
-    axs[1].legend(fontsize=8, frameon=False)
+    axs[1].legend(fontsize=7, frameon=False, loc='upper left')
+    pit = tt.loc[tt.model == 'ensemble', 'pit'].to_numpy(float)
+    axs[2].hist(pit, bins=20, range=(0, 1), density=True, color=COL['ensemble'], alpha=0.8, edgecolor='white')
+    axs[2].axhline(1, color='k', ls='--', lw=0.8); axs[2].set_xlabel('PIT'); axs[2].set_ylabel('Density')
+    axs[2].set_title('(c) PIT, ensemble', fontsize=10); axs[2].set_ylim(0, 1.6)
     fig.tight_layout(); fig.savefig(os.path.join(OUT, 'fig3_coverage_width.png')); plt.close(fig)
 
 
