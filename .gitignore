@@ -1,0 +1,35 @@
+# data and outputs (download with the scripts)
+raw/
+processed/
+processed_openmeteo/
+era5_data/
+forecast_data/
+tigge_tracks/
+results/
+logs/
+model_configs/_resolved/
+model_runs/*/test/
+model_runs/*/validation/
+model_runs/*/*.npz
+model_runs/*/*_history.json
+*.nc
+*.grib2
+*.tar
+*.tar.gz
+*.zip
+
+# credentials
+.cdsapirc
+.netrc
+*token*
+*credential*
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# editors
+.idea/
+.vscode/

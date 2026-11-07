@@ -1,0 +1,243 @@
+{
+ "data_dir": "processed/site_G_reforecast",
+ "output_dir": "model_runs/GKH_h15_why6_p7k6_s2_transformer_pretrain",
+ "mode": "reforecast",
+ "site_id": "GKH",
+ "target": "hs",
+ "step_hours": 3,
+ "history_days": 7,
+ "horizon_days": 15,
+ "decision_delay_hours": 6,
+ "train_years": [
+  2004,
+  2005,
+  2006,
+  2007,
+  2008,
+  2009,
+  2010,
+  2011,
+  2012,
+  2013
+ ],
+ "val_years": [
+  2014,
+  2015,
+  2016
+ ],
+ "test_years": [
+  2017,
+  2018,
+  2019
+ ],
+ "winter_months": [
+  11,
+  12,
+  1,
+  2,
+  3
+ ],
+ "summer_months": [
+  6,
+  7,
+  8,
+  9
+ ],
+ "typhoon_radius_km": 500,
+ "calm_wind_ms": 5,
+ "calm_hs_m": 1,
+ "cold_wind_ms": 10,
+ "cold_drop_24h_k": 8,
+ "cold_north_sector_deg": 60,
+ "wave_bins_m": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  6
+ ],
+ "extreme_hs_m": 4,
+ "features": {
+  "base": [
+   "hs",
+   "hs_spread",
+   "te",
+   "wave_sin",
+   "wave_cos"
+  ],
+  "season": [
+   "doy_sin",
+   "doy_cos"
+  ],
+  "weather": [
+   "u10",
+   "v10",
+   "wind_speed",
+   "msl",
+   "t2m",
+   "temp_change_24h"
+  ],
+  "extreme": [
+   "tc_distance_km",
+   "tc_bearing_sin",
+   "tc_bearing_cos",
+   "tc_vmax_ms",
+   "tc_speed_ms",
+   "tc_probability",
+   "cold_probability"
+  ]
+ },
+ "ablations": [
+  "season"
+ ],
+ "seeds": [
+  41,
+  53,
+  67
+ ],
+ "hidden": 64,
+ "layers": 1,
+ "heads": 2,
+ "degree": 12,
+ "dropout": 0.2953392095392541,
+ "epochs": 60,
+ "patience": 8,
+ "batch_size": 16,
+ "learning_rate": 0.0015626759748701242,
+ "min_group_events": 5,
+ "bootstrap_repeats": 1000,
+ "device": "auto",
+ "sites": [
+  {
+   "site_id": "G",
+   "data_dir": "processed/site_G_reforecast",
+   "train_years": [
+    2004,
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013
+   ],
+   "val_years": [
+    2014,
+    2015,
+    2016
+   ],
+   "test_years": [
+    2017,
+    2018,
+    2019
+   ]
+  },
+  {
+   "site_id": "K",
+   "data_dir": "processed/site_K_reforecast",
+   "train_years": [
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014
+   ],
+   "val_years": [
+    2015,
+    2016
+   ],
+   "test_years": [
+    2017,
+    2018,
+    2019
+   ]
+  },
+  {
+   "site_id": "H",
+   "data_dir": "processed/site_H_reforecast",
+   "train_years": [
+    2012,
+    2013,
+    2014,
+    2015
+   ],
+   "val_years": [
+    2016,
+    2017
+   ],
+   "test_years": [
+    2018,
+    2019
+   ]
+  }
+ ],
+ "tw_loss": {
+  "threshold_m": 2.5,
+  "weight": 1.0
+ },
+ "models": [
+  "transformer"
+ ],
+ "pretrain": {
+  "epochs": 20,
+  "sites": [
+   {
+    "site_id": "G",
+    "data_dir": "processed/site_G_era5pre",
+    "train_years": [
+     2000,
+     2001,
+     2002,
+     2003
+    ],
+    "val_years": [],
+    "test_years": []
+   },
+   {
+    "site_id": "K",
+    "data_dir": "processed/site_K_era5pre",
+    "train_years": [
+     2000,
+     2001,
+     2002,
+     2003,
+     2004,
+     2005,
+     2006,
+     2007
+    ],
+    "val_years": [],
+    "test_years": []
+   },
+   {
+    "site_id": "H",
+    "data_dir": "processed/site_H_era5pre",
+    "train_years": [
+     2000,
+     2001,
+     2002,
+     2003,
+     2004,
+     2005,
+     2006,
+     2007,
+     2008,
+     2009,
+     2010,
+     2011
+    ],
+    "val_years": [],
+    "test_years": []
+   }
+  ]
+ },
+ "pca": {
+  "components": 6
+ },
+ "_note": "10-31 查\"7 压 6 显著变差、13 压 6 不显著\"的原因：7 压 6，换 3 个新种子"
+}

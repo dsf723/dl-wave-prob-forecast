@@ -1,0 +1,17 @@
+numpy>=1.26
+pandas>=2.2
+scipy>=1.11
+torch>=2.3
+matplotlib>=3.8
+scikit-learn>=1.4
+optuna>=3.5
+xarray>=2024.1
+netCDF4>=1.6
+h5py>=3.10
+requests>=2.31
+urllib3>=2.0
+# data download only
+cdsapi>=0.7
+copernicusmarine>=1.0
+eccodes>=1.6
+pytest>=8.0

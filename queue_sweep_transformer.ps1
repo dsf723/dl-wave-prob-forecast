@@ -1,0 +1,12 @@
+﻿# 10-31 主成分数扫描（13 个变量，不用 PCA 与 11 到 1 个主成分）
+python run_training.py model_configs/GKH_h15_sweep_raw13_transformer_pretrain.json
+python run_training.py model_configs/GKH_h15_sweep_k10_transformer_pretrain.json
+python run_training.py model_configs/GKH_h15_sweep_k9_transformer_pretrain.json
+python run_training.py model_configs/GKH_h15_sweep_k8_transformer_pretrain.json
+python run_training.py model_configs/GKH_h15_sweep_k7_transformer_pretrain.json
+python run_training.py model_configs/GKH_h15_sweep_k6_transformer_pretrain.json
+python run_training.py model_configs/GKH_h15_sweep_k5_transformer_pretrain.json
+python run_training.py model_configs/GKH_h15_sweep_k4_transformer_pretrain.json
+python run_training.py model_configs/GKH_h15_sweep_k3_transformer_pretrain.json
+python run_training.py model_configs/GKH_h15_sweep_k2_transformer_pretrain.json
+python run_training.py model_configs/GKH_h15_sweep_k1_transformer_pretrain.json

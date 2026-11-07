@@ -1,0 +1,1020 @@
+{
+ "_说明": "研究站点的唯一配置。下载、转换、存档脚本都从这里读坐标。area = ERA5 下载范围 [北, 西, 南, 东]；point = 提取序列的位置；buoy = 用于独立验证的浮标。priority 越小越先下载。",
+ "sites": [
+  {
+   "id": "A",
+   "name": "zhoushan",
+   "label": "舟山嵊泗外海（东海，混合型）",
+   "point": [
+    30.5,
+    123.0
+   ],
+   "area": [
+    31.5,
+    122.0,
+    29.5,
+    124.0
+   ],
+   "priority": 1,
+   "buoy": null,
+   "verification": "ERA5 + 卫星高度计；邻近东海浮标见站点 K"
+  },
+  {
+   "id": "B",
+   "name": "zhuhai",
+   "label": "珠海万山外海（南海北部，台风主导）",
+   "point": [
+    22.0,
+    114.0
+   ],
+   "area": [
+    23.0,
+    113.0,
+    21.0,
+    115.0
+   ],
+   "priority": 2,
+   "buoy": null,
+   "verification": "ERA5 + 卫星高度计"
+  },
+  {
+   "id": "C",
+   "name": "pingtan",
+   "label": "台湾海峡平潭外海（季风主导）",
+   "point": [
+    25.5,
+    120.0
+   ],
+   "area": [
+    26.5,
+    119.0,
+    24.5,
+    121.0
+   ],
+   "priority": 3,
+   "buoy": null,
+   "verification": "ERA5 + 卫星高度计；可申请台湾中央气象署海峡浮标历史资料"
+  },
+  {
+   "id": "G",
+   "name": "guam",
+   "label": "关岛 Ipan（西北太平洋，台风主导，浮标验证站）",
+   "point": [
+    13.354,
+    144.788
+   ],
+   "area": [
+    14.5,
+    143.5,
+    12.5,
+    145.5
+   ],
+   "priority": 4,
+   "buoy": {
+    "source": "NDBC",
+    "station": "52200",
+    "alias": "CDIP 121 Ipan",
+    "lat": 13.354,
+    "lon": 144.788,
+    "years": [
+     2004,
+     2025
+    ],
+    "note": "离岸约 1.6 km、水深 200 m；岛屿附近，ERA5 取最近有效海点"
+   },
+   "verification": "NDBC 52200 浮标"
+  },
+  {
+   "id": "K",
+   "name": "jeju_south",
+   "label": "济州岛以南马罗岛（东海北部，台风 + 冬季风，浮标验证站）",
+   "point": [
+    33.08,
+    126.03
+   ],
+   "area": [
+    34.5,
+    125.0,
+    32.0,
+    127.5
+   ],
+   "priority": 5,
+   "buoy": {
+    "source": "KMA",
+    "station": "22107",
+    "alias": "马罗岛 Marado",
+    "lat": 33.08,
+    "lon": 126.03,
+    "years": [
+     2008,
+     2025
+    ],
+    "note": "data.kma.go.kr 해양기상부이 파일셋 逐时资料（KST，已转 UTC），2026-10-16 下载，见 prepare_kma_buoy.py",
+    "source_name": "KMA 韩国气象厅海洋气象浮标"
+   },
+   "verification": "KMA 22107 浮标（实测待获取）；GEFS 回算有该站历史预报"
+  },
+  {
+   "id": "H",
+   "name": "hawaii_wets",
+   "label": "夏威夷 WETS 波浪能试验场（信风浪 + 涌浪，浮标验证站，可选）",
+   "point": [
+    21.477,
+    -157.752
+   ],
+   "area": [
+    22.5,
+    -158.8,
+    20.5,
+    -156.8
+   ],
+   "priority": 6,
+   "buoy": {
+    "source": "NDBC",
+    "station": "51207",
+    "alias": "CDIP 198 Kaneohe Bay WETS",
+    "lat": 21.477,
+    "lon": -157.752,
+    "years": [
+     2012,
+     2025
+    ],
+    "note": "水深 80 m"
+   },
+   "verification": "NDBC 51207 浮标",
+   "ts_point": [
+    21.5,
+    -157.5
+   ],
+   "ts_point_note": "ERA5 海浪 0.5° 格点：最近点 (21.5,-158.0) 在瓦胡岛陆地，海浪全缺测；改取东侧海上格点（距浮标约 26 km）"
+  },
+  {
+   "id": "G2",
+   "name": "guam_ritidian",
+   "label": "关岛北部 Ritidian Point（G 站的邻近补充站）",
+   "point": [
+    13.682,
+    144.806
+   ],
+   "priority": 7,
+   "buoy": {
+    "source": "NDBC",
+    "station": "52202",
+    "alias": "CDIP 196 Ritidian Point",
+    "lat": 13.682,
+    "lon": 144.806,
+    "years": [
+     2000,
+     2025
+    ]
+   },
+   "verification": "NDBC 52202 浮标；GEFS 回算有该站历史预报"
+  },
+  {
+   "id": "H2",
+   "name": "hawaii_mokapu",
+   "label": "夏威夷 Mokapu Point（H 站东南约 9 km 的补充站）",
+   "point": [
+    21.417,
+    -157.68
+   ],
+   "priority": 7,
+   "buoy": {
+    "source": "NDBC",
+    "station": "51202",
+    "alias": "CDIP 098 Mokapu Point",
+    "lat": 21.417,
+    "lon": -157.68,
+    "years": [
+     2000,
+     2025
+    ]
+   },
+   "verification": "NDBC 51202 浮标；GEFS 回算有该站历史预报",
+   "ts_point": [
+    21.5,
+    -157.5
+   ],
+   "ts_point_note": "与 H 站同一 ERA5 海上格点"
+  },
+  {
+   "id": "K2",
+   "name": "jeju_chujado",
+   "label": "추자도 推子岛（K 站以北约 80 km，济州海峡）",
+   "point": [
+    33.79,
+    126.14
+   ],
+   "priority": 7,
+   "buoy": {
+    "source": "KMA",
+    "station": "22184",
+    "alias": "추자도 Chujado",
+    "lat": 33.79,
+    "lon": 126.14,
+    "years": [
+     2014,
+     2025
+    ],
+    "note": "data.kma.go.kr 해양기상부이 파일셋 逐时资料，2026-10-21 下载"
+   },
+   "verification": "KMA 22184；GEFS 回算有该站（坐标取自回算文件）"
+  },
+  {
+   "id": "K3",
+   "name": "jeju_seogwipo",
+   "label": "서귀포 西归浦（济州岛东南，K 站以东约 90 km）",
+   "point": [
+    33.13,
+    127.02
+   ],
+   "priority": 7,
+   "buoy": {
+    "source": "KMA",
+    "station": "22187",
+    "alias": "서귀포 Seogwipo",
+    "lat": 33.13,
+    "lon": 127.02,
+    "years": [
+     2015,
+     2025
+    ],
+    "note": "data.kma.go.kr 해양기상부이 파일셋 逐时资料，2026-10-21 下载"
+   },
+   "verification": "KMA 22187；GEFS 回算有该站（坐标取自回算文件）"
+  },
+  {
+   "id": "KR22101",
+   "name": "korea_22101",
+   "label": "韩国 KMA 海洋浮标 덕적도 Deokjeokdo（10-22 新增，联合训练候选站）",
+   "point": [
+    37.23,
+    126.02
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "KMA",
+    "station": "22101",
+    "alias": "덕적도 Deokjeokdo",
+    "lat": 37.23,
+    "lon": 126.02,
+    "years": [
+     1996,
+     2025
+    ],
+    "note": "data.kma.go.kr 해양기상부이 파일셋 逐时资料，2026-10-22 下载（raw/observations/kma/batch_20261022）"
+   },
+   "verification": "KMA 22101；坐标取自 GEFS 回算站点表；回算需在服务器用扩充后的 STATIONS 重新提取"
+  },
+  {
+   "id": "KR22102",
+   "name": "korea_22102",
+   "label": "韩国 KMA 海洋浮标 칠발도 Chilbaldo（10-22 新增，联合训练候选站）",
+   "point": [
+    34.8,
+    125.77
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "KMA",
+    "station": "22102",
+    "alias": "칠발도 Chilbaldo",
+    "lat": 34.8,
+    "lon": 125.77,
+    "years": [
+     1996,
+     2025
+    ],
+    "note": "data.kma.go.kr 해양기상부이 파일셋 逐时资料，2026-10-22 下载（raw/observations/kma/batch_20261022）"
+   },
+   "verification": "KMA 22102；坐标取自 GEFS 回算站点表；回算需在服务器用扩充后的 STATIONS 重新提取"
+  },
+  {
+   "id": "KR22103",
+   "name": "korea_22103",
+   "label": "韩国 KMA 海洋浮标 거문도 Geomundo（10-22 新增，联合训练候选站）",
+   "point": [
+    34.0,
+    127.5
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "KMA",
+    "station": "22103",
+    "alias": "거문도 Geomundo",
+    "lat": 34.0,
+    "lon": 127.5,
+    "years": [
+     1998,
+     2025
+    ],
+    "note": "data.kma.go.kr 해양기상부이 파일셋 逐时资料，2026-10-22 下载（raw/observations/kma/batch_20261022）"
+   },
+   "verification": "KMA 22103；坐标取自 GEFS 回算站点表；回算需在服务器用扩充后的 STATIONS 重新提取"
+  },
+  {
+   "id": "KR22104",
+   "name": "korea_22104",
+   "label": "韩国 KMA 海洋浮标 거제도 Geojedo（10-22 新增，联合训练候选站）",
+   "point": [
+    34.77,
+    128.9
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "KMA",
+    "station": "22104",
+    "alias": "거제도 Geojedo",
+    "lat": 34.77,
+    "lon": 128.9,
+    "years": [
+     1998,
+     2025
+    ],
+    "note": "data.kma.go.kr 해양기상부이 파일셋 逐时资料，2026-10-22 下载（raw/observations/kma/batch_20261022）"
+   },
+   "verification": "KMA 22104；坐标取自 GEFS 回算站点表；回算需在服务器用扩充后的 STATIONS 重新提取"
+  },
+  {
+   "id": "KR22105",
+   "name": "korea_22105",
+   "label": "韩国 KMA 海洋浮标 동해 Donghae（10-22 新增，联合训练候选站）",
+   "point": [
+    37.53,
+    130.0
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "KMA",
+    "station": "22105",
+    "alias": "동해 Donghae",
+    "lat": 37.53,
+    "lon": 130.0,
+    "years": [
+     1997,
+     2025
+    ],
+    "note": "data.kma.go.kr 해양기상부이 파일셋 逐时资料，2026-10-22 下载（raw/observations/kma/batch_20261022）"
+   },
+   "verification": "KMA 22105；坐标取自 GEFS 回算站点表；回算需在服务器用扩充后的 STATIONS 重新提取"
+  },
+  {
+   "id": "KR22106",
+   "name": "korea_22106",
+   "label": "韩国 KMA 海洋浮标 포항 Pohang（10-22 新增，联合训练候选站）",
+   "point": [
+    36.35,
+    129.78
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "KMA",
+    "station": "22106",
+    "alias": "포항 Pohang",
+    "lat": 36.35,
+    "lon": 129.78,
+    "years": [
+     2008,
+     2025
+    ],
+    "note": "data.kma.go.kr 해양기상부이 파일셋 逐时资料，2026-10-22 下载（raw/observations/kma/batch_20261022）"
+   },
+   "verification": "KMA 22106；坐标取自 GEFS 回算站点表；回算需在服务器用扩充后的 STATIONS 重新提取"
+  },
+  {
+   "id": "KR22108",
+   "name": "korea_22108",
+   "label": "韩国 KMA 海洋浮标 외연도 Oeyeondo（10-22 新增，联合训练候选站）",
+   "point": [
+    36.25,
+    125.75
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "KMA",
+    "station": "22108",
+    "alias": "외연도 Oeyeondo",
+    "lat": 36.25,
+    "lon": 125.75,
+    "years": [
+     2010,
+     2025
+    ],
+    "note": "data.kma.go.kr 해양기상부이 파일셋 逐时资料，2026-10-22 下载（raw/observations/kma/batch_20261022）"
+   },
+   "verification": "KMA 22108；坐标取自 GEFS 回算站点表；回算需在服务器用扩充后的 STATIONS 重新提取"
+  },
+  {
+   "id": "KR22183",
+   "name": "korea_22183",
+   "label": "韩国 KMA 海洋浮标 신안 Sinan（10-22 新增，联合训练候选站）",
+   "point": [
+    34.73,
+    126.24
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "KMA",
+    "station": "22183",
+    "alias": "신안 Sinan",
+    "lat": 34.73,
+    "lon": 126.24,
+    "years": [
+     2013,
+     2025
+    ],
+    "note": "data.kma.go.kr 해양기상부이 파일셋 逐时资料，2026-10-22 下载（raw/observations/kma/batch_20261022）"
+   },
+   "verification": "KMA 22183；坐标取自 GEFS 回算站点表；回算需在服务器用扩充后的 STATIONS 重新提取"
+  },
+  {
+   "id": "KR22185",
+   "name": "korea_22185",
+   "label": "韩国 KMA 海洋浮标 인천 Incheon（10-22 新增，联合训练候选站）",
+   "point": [
+    37.09,
+    125.43
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "KMA",
+    "station": "22185",
+    "alias": "인천 Incheon",
+    "lat": 37.09,
+    "lon": 125.43,
+    "years": [
+     2015,
+     2025
+    ],
+    "note": "data.kma.go.kr 해양기상부이 파일셋 逐时资料，2026-10-22 下载（raw/observations/kma/batch_20261022）"
+   },
+   "verification": "KMA 22185；坐标取自 GEFS 回算站点表；回算需在服务器用扩充后的 STATIONS 重新提取"
+  },
+  {
+   "id": "KR22186",
+   "name": "korea_22186",
+   "label": "韩国 KMA 海洋浮标 부안 Buan（10-22 新增，联合训练候选站）",
+   "point": [
+    35.66,
+    125.81
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "KMA",
+    "station": "22186",
+    "alias": "부안 Buan",
+    "lat": 35.66,
+    "lon": 125.81,
+    "years": [
+     2015,
+     2025
+    ],
+    "note": "data.kma.go.kr 해양기상부이 파일셋 逐时资料，2026-10-22 下载（raw/observations/kma/batch_20261022）"
+   },
+   "verification": "KMA 22186；坐标取自 GEFS 回算站点表；回算需在服务器用扩充后的 STATIONS 重新提取"
+  },
+  {
+   "id": "KR22188",
+   "name": "korea_22188",
+   "label": "韩国 KMA 海洋浮标 통영 Tongyeong（10-22 新增，联合训练候选站）",
+   "point": [
+    34.39,
+    128.23
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "KMA",
+    "station": "22188",
+    "alias": "통영 Tongyeong",
+    "lat": 34.39,
+    "lon": 128.23,
+    "years": [
+     2015,
+     2025
+    ],
+    "note": "data.kma.go.kr 해양기상부이 파일셋 逐时资料，2026-10-22 下载（raw/observations/kma/batch_20261022）"
+   },
+   "verification": "KMA 22188；坐标取自 GEFS 回算站点表；回算需在服务器用扩充后的 STATIONS 重新提取"
+  },
+  {
+   "id": "KR22189",
+   "name": "korea_22189",
+   "label": "韩国 KMA 海洋浮标 울산 Ulsan（10-22 新增，联合训练候选站）",
+   "point": [
+    35.35,
+    129.84
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "KMA",
+    "station": "22189",
+    "alias": "울산 Ulsan",
+    "lat": 35.35,
+    "lon": 129.84,
+    "years": [
+     2015,
+     2025
+    ],
+    "note": "data.kma.go.kr 해양기상부이 파일셋 逐时资料，2026-10-22 下载（raw/observations/kma/batch_20261022）"
+   },
+   "verification": "KMA 22189；坐标取自 GEFS 回算站点表；回算需在服务器用扩充后的 STATIONS 重新提取"
+  },
+  {
+   "id": "KR22190",
+   "name": "korea_22190",
+   "label": "韩国 KMA 海洋浮标 울진 Uljin（10-22 新增，联合训练候选站）",
+   "point": [
+    36.91,
+    129.87
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "KMA",
+    "station": "22190",
+    "alias": "울진 Uljin",
+    "lat": 36.91,
+    "lon": 129.87,
+    "years": [
+     2015,
+     2025
+    ],
+    "note": "data.kma.go.kr 해양기상부이 파일셋 逐时资料，2026-10-22 下载（raw/observations/kma/batch_20261022）"
+   },
+   "verification": "KMA 22190；坐标取自 GEFS 回算站点表；回算需在服务器用扩充后的 STATIONS 重新提取"
+  },
+  {
+   "id": "KR21229",
+   "name": "korea_21229",
+   "label": "韩国 KMA 海洋浮标 울릉도 Ulleungdo（10-22 新增，联合训练候选站）",
+   "point": [
+    37.46,
+    131.11
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "KMA",
+    "station": "21229",
+    "alias": "울릉도 Ulleungdo",
+    "lat": 37.46,
+    "lon": 131.11,
+    "years": [
+     2011,
+     2025
+    ],
+    "note": "data.kma.go.kr 해양기상부이 파일셋 逐时资料，2026-10-22 下载（raw/observations/kma/batch_20261022）"
+   },
+   "verification": "KMA 21229；坐标取自 GEFS 回算站点表；回算需在服务器用扩充后的 STATIONS 重新提取"
+  },
+  {
+   "id": "TWC6W08",
+   "name": "taiwan_matsu",
+   "label": "台湾中央气象署浮标 Matsu（11-02 新增，台湾海峡）",
+   "point": [
+    26.3769,
+    120.5361
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "CMEMS",
+    "station": "C6W08",
+    "alias": "Matsu",
+    "lat": 26.3769,
+    "lon": 120.5361,
+    "years": [
+     2012,
+     2017
+    ],
+    "note": "Copernicus INSITU_GLO_WAV_DISCRETE_MY_013_045（202411，逐时，只有 Hs），2026-11-02 下载，见 prepare_cmems_taiwan_buoy.py",
+    "source_name": "台湾中央气象署（经 Copernicus）"
+   },
+   "verification": "CWA C6W08；在 download_gefs_reforecast.py 的提取清单"
+  },
+  {
+   "id": "TW46757B",
+   "name": "taiwan_hsinchu",
+   "label": "台湾中央气象署浮标 Hsinchu（11-02 新增，台湾海峡）",
+   "point": [
+    24.76,
+    120.8436
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "CMEMS",
+    "station": "46757B",
+    "alias": "Hsinchu",
+    "lat": 24.76,
+    "lon": 120.8436,
+    "years": [
+     2012,
+     2017
+    ],
+    "note": "Copernicus INSITU_GLO_WAV_DISCRETE_MY_013_045（202411，逐时，只有 Hs），2026-11-02 下载，见 prepare_cmems_taiwan_buoy.py",
+    "source_name": "台湾中央气象署（经 Copernicus）"
+   },
+   "verification": "CWA 46757B；在 download_gefs_reforecast.py 的提取清单"
+  },
+  {
+   "id": "TW46735A",
+   "name": "taiwan_penghu",
+   "label": "台湾中央气象署浮标 Penghu（11-02 新增，台湾海峡）",
+   "point": [
+    23.7269,
+    119.5519
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "CMEMS",
+    "station": "46735A",
+    "alias": "Penghu",
+    "lat": 23.7269,
+    "lon": 119.5519,
+    "years": [
+     2012,
+     2017
+    ],
+    "note": "Copernicus INSITU_GLO_WAV_DISCRETE_MY_013_045（202411，逐时，只有 Hs），2026-11-02 下载，见 prepare_cmems_taiwan_buoy.py",
+    "source_name": "台湾中央气象署（经 Copernicus）"
+   },
+   "verification": "CWA 46735A；在 download_gefs_reforecast.py 的提取清单"
+  },
+  {
+   "id": "TW46787A",
+   "name": "taiwan_kinmen",
+   "label": "台湾中央气象署浮标 Kinmen（11-02 新增，台湾海峡）",
+   "point": [
+    24.38,
+    118.4133
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "CMEMS",
+    "station": "46787A",
+    "alias": "Kinmen",
+    "lat": 24.38,
+    "lon": 118.4133,
+    "years": [
+     2012,
+     2017
+    ],
+    "note": "Copernicus INSITU_GLO_WAV_DISCRETE_MY_013_045（202411，逐时，只有 Hs），2026-11-02 下载，见 prepare_cmems_taiwan_buoy.py",
+    "source_name": "台湾中央气象署（经 Copernicus）"
+   },
+   "verification": "CWA 46787A；在 download_gefs_reforecast.py 的提取清单"
+  },
+  {
+   "id": "TW46778A",
+   "name": "taiwan_qigu",
+   "label": "台湾中央气象署浮标 Qigu（11-02 新增，台湾海峡）",
+   "point": [
+    23.0956,
+    120.0083
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "CMEMS",
+    "station": "46778A",
+    "alias": "Qigu",
+    "lat": 23.0956,
+    "lon": 120.0083,
+    "years": [
+     2012,
+     2017
+    ],
+    "note": "Copernicus INSITU_GLO_WAV_DISCRETE_MY_013_045（202411，逐时，只有 Hs），2026-11-02 下载，见 prepare_cmems_taiwan_buoy.py",
+    "source_name": "台湾中央气象署（经 Copernicus）"
+   },
+   "verification": "CWA 46778A；在 download_gefs_reforecast.py 的提取清单"
+  },
+  {
+   "id": "TW46694A",
+   "name": "taiwan_longdong",
+   "label": "台湾中央气象署浮标 Longdong（11-02 新增，台湾周边）",
+   "point": [
+    25.0953,
+    121.923
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "CMEMS",
+    "station": "46694A",
+    "alias": "Longdong",
+    "lat": 25.0953,
+    "lon": 121.923,
+    "years": [
+     2012,
+     2017
+    ],
+    "note": "Copernicus INSITU_GLO_WAV_DISCRETE_MY_013_045（202411，逐时，只有 Hs），2026-11-02 下载，见 prepare_cmems_taiwan_buoy.py",
+    "source_name": "台湾中央气象署（经 Copernicus）"
+   },
+   "verification": "CWA 46694A；在 download_gefs_reforecast.py 的提取清单"
+  },
+  {
+   "id": "TW46708A",
+   "name": "taiwan_guishandao",
+   "label": "台湾中央气象署浮标 Guishandao（11-02 新增，台湾周边）",
+   "point": [
+    24.8469,
+    121.9233
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "CMEMS",
+    "station": "46708A",
+    "alias": "Guishandao",
+    "lat": 24.8469,
+    "lon": 121.9233,
+    "years": [
+     2012,
+     2017
+    ],
+    "note": "Copernicus INSITU_GLO_WAV_DISCRETE_MY_013_045（202411，逐时，只有 Hs），2026-11-02 下载，见 prepare_cmems_taiwan_buoy.py",
+    "source_name": "台湾中央气象署（经 Copernicus）"
+   },
+   "verification": "CWA 46708A；在 download_gefs_reforecast.py 的提取清单"
+  },
+  {
+   "id": "TW46706A",
+   "name": "taiwan_su_ao",
+   "label": "台湾中央气象署浮标 Su-ao（11-02 新增，台湾周边）",
+   "point": [
+    24.6194,
+    121.88
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "CMEMS",
+    "station": "46706A",
+    "alias": "Su-ao",
+    "lat": 24.6194,
+    "lon": 121.88,
+    "years": [
+     2012,
+     2017
+    ],
+    "note": "Copernicus INSITU_GLO_WAV_DISCRETE_MY_013_045（202411，逐时，只有 Hs），2026-11-02 下载，见 prepare_cmems_taiwan_buoy.py",
+    "source_name": "台湾中央气象署（经 Copernicus）"
+   },
+   "verification": "CWA 46706A；在 download_gefs_reforecast.py 的提取清单"
+  },
+  {
+   "id": "TW46699A",
+   "name": "taiwan_hualien",
+   "label": "台湾中央气象署浮标 Hualien（11-02 新增，台湾周边）",
+   "point": [
+    24.0356,
+    121.6308
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "CMEMS",
+    "station": "46699A",
+    "alias": "Hualien",
+    "lat": 24.0356,
+    "lon": 121.6308,
+    "years": [
+     2012,
+     2017
+    ],
+    "note": "Copernicus INSITU_GLO_WAV_DISCRETE_MY_013_045（202411，逐时，只有 Hs），2026-11-02 下载，见 prepare_cmems_taiwan_buoy.py",
+    "source_name": "台湾中央气象署（经 Copernicus）"
+   },
+   "verification": "CWA 46699A；在 download_gefs_reforecast.py 的提取清单"
+  },
+  {
+   "id": "TWWRA007",
+   "name": "taiwan_taitung",
+   "label": "台湾中央气象署浮标 Taitung（11-02 新增，台湾周边）",
+   "point": [
+    22.722,
+    121.14
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "CMEMS",
+    "station": "WRA007",
+    "alias": "Taitung",
+    "lat": 22.722,
+    "lon": 121.14,
+    "years": [
+     2012,
+     2015
+    ],
+    "note": "Copernicus INSITU_GLO_WAV_DISCRETE_MY_013_045（202411，逐时，只有 Hs），2026-11-02 下载，见 prepare_cmems_taiwan_buoy.py",
+    "source_name": "台湾中央气象署（经 Copernicus）"
+   },
+   "verification": "CWA WRA007；在 download_gefs_reforecast.py 的提取清单"
+  },
+  {
+   "id": "TW46714D",
+   "name": "taiwan_xiao_liuqiu",
+   "label": "台湾中央气象署浮标 Xiao Liuqiu（11-02 新增，台湾周边）",
+   "point": [
+    22.3139,
+    120.3514
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "CMEMS",
+    "station": "46714D",
+    "alias": "Xiao Liuqiu",
+    "lat": 22.3139,
+    "lon": 120.3514,
+    "years": [
+     2012,
+     2015
+    ],
+    "note": "Copernicus INSITU_GLO_WAV_DISCRETE_MY_013_045（202411，逐时，只有 Hs），2026-11-02 下载，见 prepare_cmems_taiwan_buoy.py",
+    "source_name": "台湾中央气象署（经 Copernicus）"
+   },
+   "verification": "CWA 46714D；在 download_gefs_reforecast.py 的提取清单"
+  },
+  {
+   "id": "TW46759A",
+   "name": "taiwan_eluanbi",
+   "label": "台湾中央气象署浮标 Eluanbi（11-02 新增，台湾周边）",
+   "point": [
+    21.9006,
+    120.8314
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "CMEMS",
+    "station": "46759A",
+    "alias": "Eluanbi",
+    "lat": 21.9006,
+    "lon": 120.8314,
+    "years": [
+     2012,
+     2017
+    ],
+    "note": "Copernicus INSITU_GLO_WAV_DISCRETE_MY_013_045（202411，逐时，只有 Hs），2026-11-02 下载，见 prepare_cmems_taiwan_buoy.py",
+    "source_name": "台湾中央气象署（经 Copernicus）"
+   },
+   "verification": "CWA 46759A；在 download_gefs_reforecast.py 的提取清单"
+  },
+  {
+   "id": "TWC6V27",
+   "name": "taiwan_pratas",
+   "label": "台湾中央气象署浮标 Pratas（11-02 新增，台湾周边）",
+   "point": [
+    21.0213,
+    118.8611
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "CMEMS",
+    "station": "C6V27",
+    "alias": "Pratas",
+    "lat": 21.0213,
+    "lon": 118.8611,
+    "years": [
+     2012,
+     2016
+    ],
+    "note": "Copernicus INSITU_GLO_WAV_DISCRETE_MY_013_045（202411，逐时，只有 Hs），2026-11-02 下载，见 prepare_cmems_taiwan_buoy.py",
+    "source_name": "台湾中央气象署（经 Copernicus）"
+   },
+   "verification": "CWA C6V27；在 download_gefs_reforecast.py 的提取清单"
+  },
+  {
+   "id": "TWC6S62",
+   "name": "taiwan_taitung_open_ocean",
+   "label": "台湾中央气象署浮标 Taitung Open Ocean（11-02 新增，台湾周边）",
+   "point": [
+    21.6767,
+    124.063
+   ],
+   "priority": 9,
+   "buoy": {
+    "source": "CMEMS",
+    "station": "C6S62",
+    "alias": "Taitung Open Ocean",
+    "lat": 21.6767,
+    "lon": 124.063,
+    "years": [
+     2012,
+     2016
+    ],
+    "note": "Copernicus INSITU_GLO_WAV_DISCRETE_MY_013_045（202411，逐时，只有 Hs），2026-11-02 下载，见 prepare_cmems_taiwan_buoy.py",
+    "source_name": "台湾中央气象署（经 Copernicus）"
+   },
+   "verification": "CWA C6S62；不在 download_gefs_reforecast.py 的提取清单，服务器没有它的回算"
+  },
+  {
+   "id": "CW46757B",
+   "name": "taiwan_hsinchu",
+   "label": "台湾气象署浮标 hsinchu 46757B（11-04 新增，气象署历史资料，扩充训练与独立检验）",
+   "point": [
+    24.7625,
+    120.84444
+   ],
+   "priority": 10,
+   "buoy": {
+    "source": "CWA",
+    "station": "46757B",
+    "lat": 24.7625,
+    "lon": 120.84444,
+    "years": [
+     1997,
+     2026
+    ],
+    "note": "海山漁港外海，離岸約6.4公里，水深約24公尺；海象环境资讯平台 资料浮标观测历史资料（Wave-his），2026-11-04 下载，见 prepare_cwa_buoy.py",
+    "source_name": "台湾中央气象署"
+   },
+   "verification": "与 Copernicus 同站逐时对比一致（新竹 2015 年 RMSE 0.029 m）"
+  },
+  {
+   "id": "CWC6W08",
+   "name": "taiwan_matsu",
+   "label": "台湾气象署浮标 matsu C6W08（11-04 新增，气象署历史资料，扩充训练与独立检验）",
+   "point": [
+    26.3525,
+    120.50861
+   ],
+   "priority": 10,
+   "buoy": {
+    "source": "CWA",
+    "station": "C6W08",
+    "lat": 26.3525,
+    "lon": 120.50861,
+    "years": [
+     2010,
+     2026
+    ],
+    "note": "東引島東南方約3公里，水深約51公尺；海象环境资讯平台 资料浮标观测历史资料（Wave-his），2026-11-04 下载，见 prepare_cwa_buoy.py",
+    "source_name": "台湾中央气象署"
+   },
+   "verification": "未与其他来源对比"
+  },
+  {
+   "id": "CWC6W10",
+   "name": "taiwan_qimei",
+   "label": "台湾气象署浮标 qimei C6W10（11-04 新增，气象署历史资料，只作 2020 年后参考）",
+   "point": [
+    23.19444,
+    119.66472
+   ],
+   "priority": 10,
+   "buoy": {
+    "source": "CWA",
+    "station": "C6W10",
+    "lat": 23.19444,
+    "lon": 119.66472,
+    "years": [
+     2015,
+     2026
+    ],
+    "note": "七美嶼東方23公里，水深50公尺；海象环境资讯平台 资料浮标观测历史资料（Wave-his），2026-11-04 下载，见 prepare_cwa_buoy.py",
+    "source_name": "台湾中央气象署"
+   },
+   "verification": "未与其他来源对比"
+  },
+  {
+   "id": "CWC5W09",
+   "name": "taiwan_dongji",
+   "label": "台湾气象署浮标 dongji C5W09（11-04 新增，气象署历史资料，只作参考）",
+   "point": [
+    23.2565,
+    119.6839
+   ],
+   "priority": 10,
+   "buoy": {
+    "source": "CWA",
+    "station": "C5W09",
+    "lat": 23.2565,
+    "lon": 119.6839,
+    "years": [
+     2013,
+     2019
+    ],
+    "note": "東吉島東方，水深20公尺；海象环境资讯平台 资料浮标观测历史资料（Wave-his），2026-11-04 下载，见 prepare_cwa_buoy.py",
+    "source_name": "台湾中央气象署"
+   },
+   "verification": "未与其他来源对比"
+  },
+  {
+   "id": "CWC6F01",
+   "name": "taiwan_taichung",
+   "label": "台湾气象署浮标 taichung C6F01（11-04 新增，气象署历史资料，只作 2020 年后参考）",
+   "point": [
+    24.2397,
+    120.4199
+   ],
+   "priority": 10,
+   "buoy": {
+    "source": "CWA",
+    "station": "C6F01",
+    "lat": 24.2397,
+    "lon": 120.4199,
+    "years": [
+     2019,
+     2026
+    ],
+    "note": "大肚溪出海口西北約6公里，水深19.8公尺；海象环境资讯平台 资料浮标观测历史资料（Wave-his），2026-11-04 下载，见 prepare_cwa_buoy.py",
+    "source_name": "台湾中央气象署"
+   },
+   "verification": "未与其他来源对比"
+  }
+ ]
+}

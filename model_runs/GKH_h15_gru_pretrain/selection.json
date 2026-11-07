@@ -1,0 +1,16 @@
+{
+  "config_hash": "749e034d3cbc9be39a73a1dc99408f85912f3b7265fe070cc830e145a2670d7a",
+  "best": {
+    "gru": {
+      "ablation": "season",
+      "objective": 0.3925095849088753
+    }
+  },
+  "fallback": "gru",
+  "rules": {},
+  "deploy_candidate": "gru",
+  "selection_split": "validation_only",
+  "objective": "0.5 overall CRPS + 0.5 extreme-weather CRPS; overall if no extremes",
+  "warning": "Validation scores used for selection are optimistic. No real-skill claim before held-out evaluation.",
+  "config_hash_portable": "041ddd5a14abdd453e8c4983a5087ac1a9fe48ec35592baf793d9f298d43d783"
+}

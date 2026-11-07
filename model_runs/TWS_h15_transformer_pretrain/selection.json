@@ -1,0 +1,16 @@
+{
+  "config_hash": "045c293ebc2b79e0b2e879757a9ed0ebba96aaedb565d42eee93ac8bfa2a2391",
+  "config_hash_portable": "0d645b078b2d36b09a75a2a9f43ba6c6a5328382f6bdcf038897eaecc5bf0ecb",
+  "best": {
+    "transformer": {
+      "ablation": "season",
+      "objective": 0.6358431156697668
+    }
+  },
+  "fallback": "transformer",
+  "rules": {},
+  "deploy_candidate": "transformer",
+  "selection_split": "validation_only",
+  "objective": "0.5 overall CRPS + 0.5 extreme-weather CRPS; overall if no extremes",
+  "warning": "Validation scores used for selection are optimistic. No real-skill claim before held-out evaluation."
+}
